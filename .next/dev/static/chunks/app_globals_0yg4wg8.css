@@ -4123,8 +4123,42 @@ h1 em, .story-hero em, .scene-heading h2 span, .reflex-copy h2 span {
 }
 
 @media (max-width: 820px) {
-  .transition-flower:nth-of-type(n+14) {
+  .transition-flower {
+    width: clamp(170px, 49vmin, 220px);
+    --flower-s: 1 !important;
+    --flower-d: 0s !important;
+  }
+
+  .transition-flower:nth-of-type(n+13) {
     display: none;
+  }
+
+  .transition-flower:first-of-type, .transition-flower:nth-of-type(4), .transition-flower:nth-of-type(7), .transition-flower:nth-of-type(10) {
+    --flower-x: -35vw !important;
+  }
+
+  .transition-flower:nth-of-type(2), .transition-flower:nth-of-type(5), .transition-flower:nth-of-type(8), .transition-flower:nth-of-type(11) {
+    --flower-x: 0vw !important;
+  }
+
+  .transition-flower:nth-of-type(3), .transition-flower:nth-of-type(6), .transition-flower:nth-of-type(9), .transition-flower:nth-of-type(12) {
+    --flower-x: 35vw !important;
+  }
+
+  .transition-flower:nth-of-type(-n+3) {
+    --flower-y: -39vh !important;
+  }
+
+  .transition-flower:nth-of-type(n+4):nth-of-type(-n+6) {
+    --flower-y: -13vh !important;
+  }
+
+  .transition-flower:nth-of-type(n+7):nth-of-type(-n+9) {
+    --flower-y: 13vh !important;
+  }
+
+  .transition-flower:nth-of-type(n+10):nth-of-type(-n+12) {
+    --flower-y: 39vh !important;
   }
 }
 
