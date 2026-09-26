@@ -8,7 +8,7 @@ export default function LegacyScript() {
 
     window.__dlynnBirthdayLegacyState = 'loading';
     const script = document.createElement('script');
-    script.src = '/legacy.js?v=1';
+    script.src = '/legacy.js?v=3';
     script.async = true;
     script.dataset.dlynnBirthdayLegacy = 'true';
     script.onload = () => {

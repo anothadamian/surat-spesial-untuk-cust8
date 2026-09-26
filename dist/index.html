@@ -63,9 +63,54 @@
       <button class="secondary-button" id="gameSkip" type="button">lewati permainan</button>
     </section>
 
-    <section class="scene reflex-scene" id="reflex" aria-labelledby="reflexTitle" hidden>
+    <section class="scene picnic-scene" id="picnic" aria-labelledby="picnicTitle" hidden>
+      <header class="scene-heading">
+        <p class="step-label">02 · pack a sunny picnic</p>
+        <h2 id="picnicTitle">Siapkan <span>piknik bebek</span></h2>
+        <p>Tarik setiap benda ke tempat bergaris yang sesuai di atas tikar.</p>
+      </header>
+      <div class="picnic-game" id="picnicGame">
+        <div class="picnic-tray" aria-label="Perlengkapan piknik">
+          <button class="picnic-item" type="button" data-picnic-item="juice" aria-label="Jus untuk area minuman"><span>🧃</span><small>jus</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="sandwich" aria-label="Roti lapis untuk area makanan"><span>🥪</span><small>sandwich</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="berries" aria-label="Stroberi untuk area buah"><span>🍓</span><small>berry</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="flower" aria-label="Bunga untuk area dekorasi"><span>🌼</span><small>bunga</small></button>
+        </div>
+        <div class="picnic-blanket" id="picnicBlanket" aria-label="Tikar piknik">
+          <button class="picnic-slot" type="button" data-accept="juice"><small>minuman</small></button>
+          <button class="picnic-slot" type="button" data-accept="sandwich"><small>makanan</small></button>
+          <button class="picnic-slot" type="button" data-accept="berries"><small>buah</small></button>
+          <button class="picnic-slot" type="button" data-accept="flower"><small>dekorasi</small></button>
+          <span class="picnic-duck" aria-hidden="true">🦆</span>
+        </div>
+        <p class="picnic-status" id="picnicStatus" aria-live="polite">0 dari 4 sudah siap</p>
+      </div>
+      <button class="secondary-button" id="picnicSkip" type="button">lewati permainan</button>
+    </section>
+
+    <section class="scene maze-scene" id="maze" aria-labelledby="mazeTitle" hidden>
+      <header class="scene-heading">
+        <p class="step-label">03 · a tiny duck delivery</p>
+        <h2 id="mazeTitle">Antarkan <span>kado kecil</span></h2>
+        <p>Seret bebek pembawa kado sampai ke sahabatnya. Tidak ada rintangan—ikuti saja jejak kuningnya.</p>
+      </header>
+      <div class="maze-game">
+        <div class="duck-maze easy-duck-trail" id="duckMaze" tabindex="0" aria-label="Seret bebek pembawa kado menuju sahabatnya atau gunakan tombol panah.">
+          <span class="maze-route" aria-hidden="true"></span>
+          <span class="trail-spark trail-spark-one" aria-hidden="true">✦</span>
+          <span class="trail-spark trail-spark-two" aria-hidden="true">♡</span>
+          <span class="trail-spark trail-spark-three" aria-hidden="true">✦</span>
+          <span class="pond-target" id="pondTarget" aria-hidden="true"><b>🐥</b><small>bestie</small></span>
+          <button class="maze-duck" id="mazeDuck" type="button" aria-label="Bebek pembawa kado yang harus diseret">🦆<i>🎁</i></button>
+        </div>
+        <p class="maze-status" id="mazeStatus" aria-live="polite">Tahan bebeknya, lalu seret menuju sahabatnya.</p>
+      </div>
+      <button class="secondary-button" id="mazeSkip" type="button">lewati permainan</button>
+    </section>
+
+<section class="scene reflex-scene" id="reflex" aria-labelledby="reflexTitle" hidden>
       <div class="reflex-copy">
-        <p class="step-label">02 · catch the sunshine</p>
+        <p class="step-label">04 · catch the sunshine</p>
         <h2 id="reflexTitle">Kejar <span>7 little suns</span></h2>
         <p>Ketuk target yang menyala. Setiap kena, posisinya akan berpindah.</p>
       </div>
@@ -82,7 +127,7 @@
 
     <section class="scene puzzle-scene" id="puzzle" aria-labelledby="puzzleTitle" hidden>
       <div class="note-card">
-        <p class="step-label">03 · three words for you</p>
+        <p class="step-label">05 · three words for you</p>
         <h2 id="puzzleTitle">Tiga kata bersembunyi di sini</h2>
         <p>Tarik garis lurus di atas huruf untuk menemukan <strong>DEEPTALK</strong>, <strong>KULINER</strong>, dan <strong>DLYNN</strong>.</p>
         <div class="found-list" id="foundList" aria-live="polite"></div>
@@ -97,7 +142,7 @@
 
     <section class="scene pin-scene" id="pin" aria-labelledby="pinTitle" hidden>
       <div class="pin-card">
-        <p class="step-label">04 · one last lock</p>
+        <p class="step-label">06 · one last lock</p>
         <h2 id="pinTitle">Enter PIN</h2>
         <p>tanggal yang selalu layak dirayakan</p>
         <div class="pin-dots" id="pinDots" aria-label="PIN 4 digit"><i></i><i></i><i></i><i></i></div>
@@ -116,8 +161,11 @@
     <section class="story" id="story" hidden>
       <div class="story-hero reveal">
         <p class="eyebrow">you made it, birthday girl</p>
-        <h2>Untuk sahabat yang<br><em>membuat cerita biasa jadi seru.</em></h2>
-        <p>Ini tempat kecil untuk menyimpan tawa, perjalanan tanpa tujuan, dan alasan kenapa persahabatan ini begitu berarti.</p>
+        <h2>Dlynn, selamat ulang tahun bes💐</h2>
+        <div class="story-opening-copy">
+          <p>Hampir semua hal seru di hidupku ada kamu di dalamnya. Kulineran, deeptalk sampai lupa waktu, jalan-jalan nggak jelas sampai ngeratain semua jalan di Wonosobo wkwk, semuanya lebih seru kalau bareng pokoknya.</p>
+          <p>Makasih ya udah jadi sahabat yang selalu ada, pas seneng maupun pas aku lagi berantakan meskipun masih suka berantem karna banyaknya perbedaan pendapat dan banyaknya perdebatan karna ga sejalan.</p>
+        </div>
         <div class="mixtape-player" aria-labelledby="playlistTitle">
           <div class="record-wrap" aria-hidden="true"><div class="record"><span></span></div></div>
           <div class="mixtape-content">
@@ -149,11 +197,14 @@
       <section class="letter-section">
         <div class="letter-paper reveal">
           <p class="letter-date">27 September · untuk Dlynn</p>
-          <h3>Untuk sahabat yang selalu ada...</h3>
-          <p>Dlynn, selamat ulang tahun bes 💐 Hampir semua hal seru di hidupku ada kamu di dalamnya. Kulineran, deeptalk sampai lupa waktu, dan jalan-jalan nggak jelas—semuanya lebih seru kalau bareng kamu.</p>
-          <p>Makasih sudah jadi sahabat yang selalu ada, pas senang maupun saat aku lagi berantakan. Meski kita masih suka berdebat karena beda pendapat, kamu tetap salah satu orang yang paling berarti.</p>
-          <p>Kamu nggak harus selalu kuat. Istirahat kalau capek. Ada aku yang siap menghibur dan mengajakmu ngeratain jalan sampai kamu lupa sebentar sama segala beban yang kamu rasakan.</p>
-          <div class="signature">always on your side,<br><strong>27</strong></div>
+          <h3>lappy birthday</h3>
+          <p>Another year older, another level unlocked. Semoga di umur yang sekarang, semua hal baik makin deket ke kamu.</p>
+          <p>Makasih juga udah jadi orang yang selalu punya vibes asik, bisa diajak cerita, bercanda, bahkan di momen receh sekalipun. Honestly ga semua orang bisa bikin orang lain ngerasa nyaman cuma lewat presence mereka, but you do.</p>
+          <p>Semoga tahun ini banyak hal yang berjalan sesuai harapan kamu. Kalaupun ada yang ga sesuai plan, semoga diganti sama sesuatu yang ternyata lebih baik. Jangan lupa juga buat take care of yourself, istirahat yang cukup, makan yang bener, dan stop overthinking hal-hal yang sebenernya belum tentu kejadian.</p>
+          <p>I wish you more happiness, more good people around you, more opportunities, and obviously more money karena kita butuh itu buat survive, wkwk.</p>
+          <p>Tetep jadi orang yang seru, tulus, dan punya cara unik buat bikin orang lain ketawa. Semoga semua yang kamu usahain pelan-pelan bisa ke achieve satu-satu. And semoga tahun ini kamu lebih banyak ketawa daripada sedihnya.</p>
+          <p>Once again, happy birthday. Hope this year treats you way better than the last one.</p>
+          <div class="signature">always on your side,<br><strong>i see</strong></div>
         </div>
       </section>
 

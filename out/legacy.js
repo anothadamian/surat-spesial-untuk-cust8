@@ -1,7 +1,7 @@
 (() => {
 const byId = (id) => document.getElementById(id);
 
-const sections = ['intro', 'game', 'reflex', 'puzzle', 'pin', 'story'];
+const sections = ['intro', 'game', 'picnic', 'maze', 'reflex', 'puzzle', 'pin', 'story'];
 const transitionWash = byId('transitionWash');
 const progressKey = 'dlynn-birthday-progress-v1';
 const readProgress = () => {
@@ -55,6 +55,8 @@ function goTo(next) {
     saveProgress({ section: next, storyScroll: next === 'story' ? 0 : savedProgress.storyScroll || 0 });
     window.scrollTo({ top: 0, behavior: 'instant' });
     if (next === 'game') startGame();
+    if (next === 'picnic') startPicnic();
+    if (next === 'maze') startMaze();
     if (next === 'reflex') startSignalGame();
     if (next === 'puzzle') schedulePuzzleClue();
     if (next === 'story') {
@@ -185,7 +187,7 @@ function stopGame() {
 function finishGame() {
   if (!gameRunning) return;
   stopGame();
-  window.setTimeout(() => goTo('reflex'), 350);
+  window.setTimeout(() => goTo('picnic'), 350);
 }
 
 catchField.addEventListener('pointermove', (event) => {
@@ -197,7 +199,178 @@ catchField.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowLeft' || event.key.toLowerCase() === 'a') { event.preventDefault(); setBasket(basketPosition - 7); }
   if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'd') { event.preventDefault(); setBasket(basketPosition + 7); }
 });
-byId('gameSkip').addEventListener('click', () => { stopGame(); goTo('reflex'); });
+byId('gameSkip').addEventListener('click', () => { stopGame(); goTo('picnic'); });
+
+
+const picnicItems = [...document.querySelectorAll('.picnic-item')];
+const picnicSlots = [...document.querySelectorAll('.picnic-slot')];
+let picnicPlaced = 0;
+let selectedPicnicItem = null;
+let picnicDrag = null;
+let picnicGhost = null;
+
+function resetPicnicDrag() {
+  picnicGhost?.remove();
+  picnicGhost = null;
+  picnicDrag?.classList.remove('is-dragging');
+  picnicDrag = null;
+}
+
+function selectPicnicItem(item) {
+  if (item.disabled) return;
+  selectedPicnicItem?.classList.remove('is-selected');
+  selectedPicnicItem = item;
+  item.classList.add('is-selected');
+  byId('picnicStatus').textContent = 'Sekarang seret ke tempat yang sesuai.';
+}
+
+function placePicnicItem(item, slot) {
+  if (!item || !slot || item.dataset.picnicItem !== slot.dataset.accept || slot.classList.contains('is-filled')) {
+    byId('picnicStatus').textContent = 'Belum pas—coba tempat bergaris yang lain.';
+    return false;
+  }
+  const icon = item.querySelector('span').textContent;
+  slot.classList.add('is-filled');
+  slot.innerHTML = `<span aria-hidden="true">${icon}</span><small>pas!</small>`;
+  item.disabled = true;
+  item.classList.remove('is-selected');
+  selectedPicnicItem = null;
+  picnicPlaced += 1;
+  byId('picnicStatus').textContent = picnicPlaced < picnicItems.length
+    ? `${picnicPlaced} dari ${picnicItems.length} sudah siap`
+    : 'Pikniknya siap! Bebeknya senang sekali ♡';
+  if (picnicPlaced === picnicItems.length) {
+    saveProgress({ picnicComplete: true });
+    window.setTimeout(() => goTo('maze'), 850);
+  }
+  return true;
+}
+
+function startPicnic() {
+  picnicPlaced = 0;
+  selectedPicnicItem = null;
+  resetPicnicDrag();
+  picnicItems.forEach((item) => {
+    item.disabled = false;
+    item.classList.remove('is-selected', 'is-dragging');
+  });
+  picnicSlots.forEach((slot) => {
+    slot.classList.remove('is-filled');
+    slot.innerHTML = `<small>${slot.dataset.accept === 'juice' ? 'minuman' : slot.dataset.accept === 'sandwich' ? 'makanan' : slot.dataset.accept === 'berries' ? 'buah' : 'dekorasi'}</small>`;
+  });
+  byId('picnicStatus').textContent = '0 dari 4 sudah siap';
+}
+
+picnicItems.forEach((item) => {
+  item.addEventListener('pointerdown', (event) => {
+    if (item.disabled) return;
+    event.preventDefault();
+    selectPicnicItem(item);
+    picnicDrag = item;
+    item.classList.add('is-dragging');
+    picnicGhost = item.cloneNode(true);
+    picnicGhost.className = 'picnic-drag-ghost';
+    document.body.appendChild(picnicGhost);
+    picnicGhost.style.left = `${event.clientX}px`;
+    picnicGhost.style.top = `${event.clientY}px`;
+  });
+  item.addEventListener('click', () => selectPicnicItem(item));
+});
+window.addEventListener('pointermove', (event) => {
+  if (!picnicDrag || !picnicGhost) return;
+  picnicGhost.style.left = `${event.clientX}px`;
+  picnicGhost.style.top = `${event.clientY}px`;
+});
+window.addEventListener('pointerup', (event) => {
+  if (!picnicDrag) return;
+  const item = picnicDrag;
+  const slot = document.elementFromPoint(event.clientX, event.clientY)?.closest('.picnic-slot');
+  if (slot) placePicnicItem(item, slot);
+  resetPicnicDrag();
+});
+picnicSlots.forEach((slot) => {
+  slot.addEventListener('click', () => {
+    if (selectedPicnicItem) placePicnicItem(selectedPicnicItem, slot);
+  });
+});
+byId('picnicSkip').addEventListener('click', () => { resetPicnicDrag(); goTo('maze'); });
+
+const duckMaze = byId('duckMaze');
+const mazeDuck = byId('mazeDuck');
+const mazeGoal = { x: 89, y: 15 };
+let mazeDragging = false;
+let mazeFinished = false;
+let mazePosition = { x: 10, y: 84 };
+
+function renderMazeDuck() {
+  mazeDuck.style.left = `${mazePosition.x}%`;
+  mazeDuck.style.top = `${mazePosition.y}%`;
+}
+
+function resetMaze(message = 'Tahan bebeknya, lalu seret menuju sahabatnya.') {
+  mazeDragging = false;
+  mazeFinished = false;
+  mazePosition = { x: 10, y: 84 };
+  mazeDuck.disabled = false;
+  mazeDuck.classList.remove('is-home');
+  renderMazeDuck();
+  byId('mazeStatus').textContent = message;
+}
+
+function startMaze() {
+  resetMaze();
+  window.setTimeout(() => mazeDuck.focus(), 650);
+}
+
+function moveMazeDuck(clientX, clientY) {
+  if (mazeFinished) return;
+  const rect = duckMaze.getBoundingClientRect();
+  const x = Math.max(7, Math.min(93, ((clientX - rect.left) / rect.width) * 100));
+  const y = Math.max(8, Math.min(92, ((clientY - rect.top) / rect.height) * 100));
+  mazePosition = { x, y };
+  renderMazeDuck();
+  if (Math.hypot(x - mazeGoal.x, y - mazeGoal.y) < 11) {
+    mazeFinished = true;
+    mazeDragging = false;
+    mazeDuck.disabled = true;
+    mazeDuck.classList.add('is-home');
+    byId('mazeStatus').textContent = 'Kadonya sampai! Momen kecil jadi seru kalau bareng bestie ♡';
+    saveProgress({ mazeComplete: true });
+    launchConfetti(32);
+    window.setTimeout(() => goTo('reflex'), 1050);
+  }
+}
+
+mazeDuck.addEventListener('pointerdown', (event) => {
+  if (mazeFinished) return;
+  event.preventDefault();
+  mazeDragging = true;
+  duckMaze.setPointerCapture?.(event.pointerId);
+  byId('mazeStatus').textContent = 'Ikuti jejak kuningnya sampai ke sahabatmu…';
+});
+duckMaze.addEventListener('pointermove', (event) => {
+  if (mazeDragging) moveMazeDuck(event.clientX, event.clientY);
+});
+['pointerup', 'pointercancel'].forEach((eventName) => {
+  duckMaze.addEventListener(eventName, () => { mazeDragging = false; });
+});
+duckMaze.addEventListener('keydown', (event) => {
+  const moves = {
+    ArrowLeft: [-4, 0],
+    ArrowRight: [4, 0],
+    ArrowUp: [0, -4],
+    ArrowDown: [0, 4],
+  };
+  const delta = moves[event.key];
+  if (!delta || mazeFinished) return;
+  event.preventDefault();
+  const rect = duckMaze.getBoundingClientRect();
+  const nextX = Math.max(7, Math.min(93, mazePosition.x + delta[0]));
+  const nextY = Math.max(8, Math.min(92, mazePosition.y + delta[1]));
+  moveMazeDuck(rect.left + (nextX / 100) * rect.width, rect.top + (nextY / 100) * rect.height);
+});
+byId('mazeSkip').addEventListener('click', () => goTo('reflex'));
+
 
 const signalTarget = byId('signalTarget');
 const signalScore = byId('signalScore');
@@ -579,6 +752,8 @@ function restoreExperience() {
   }
 
   if (currentSection === 'game') startGame();
+  if (currentSection === 'picnic') startPicnic();
+  if (currentSection === 'maze') startMaze();
   if (currentSection === 'reflex') startSignalGame();
   if (currentSection === 'puzzle') schedulePuzzleClue();
   if (currentSection === 'story') {

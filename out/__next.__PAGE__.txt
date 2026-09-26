@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[5500,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/00obax4y4vtcj.js"],"Image"]
-3:T4e8a,
+2:I[5500,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/0g8ub3meqepl6.js"],"Image"]
+3:T5ef8,
   <div class="ambient" aria-hidden="true">
     <span class="cloud cloud-a"></span><span class="cloud cloud-b"></span>
     <span class="glint glint-a">✦</span><span class="glint glint-b">✦</span><span class="glint glint-c">✧</span>
@@ -54,9 +54,54 @@
       <button class="secondary-button" id="gameSkip" type="button">lewati permainan</button>
     </section>
 
-    <section class="scene reflex-scene" id="reflex" aria-labelledby="reflexTitle" hidden>
+    <section class="scene picnic-scene" id="picnic" aria-labelledby="picnicTitle" hidden>
+      <header class="scene-heading">
+        <p class="step-label">02 · pack a sunny picnic</p>
+        <h2 id="picnicTitle">Siapkan <span>piknik bebek</span></h2>
+        <p>Tarik setiap benda ke tempat bergaris yang sesuai di atas tikar.</p>
+      </header>
+      <div class="picnic-game" id="picnicGame">
+        <div class="picnic-tray" aria-label="Perlengkapan piknik">
+          <button class="picnic-item" type="button" data-picnic-item="juice" aria-label="Jus untuk area minuman"><span>🧃</span><small>jus</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="sandwich" aria-label="Roti lapis untuk area makanan"><span>🥪</span><small>sandwich</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="berries" aria-label="Stroberi untuk area buah"><span>🍓</span><small>berry</small></button>
+          <button class="picnic-item" type="button" data-picnic-item="flower" aria-label="Bunga untuk area dekorasi"><span>🌼</span><small>bunga</small></button>
+        </div>
+        <div class="picnic-blanket" id="picnicBlanket" aria-label="Tikar piknik">
+          <button class="picnic-slot" type="button" data-accept="juice"><small>minuman</small></button>
+          <button class="picnic-slot" type="button" data-accept="sandwich"><small>makanan</small></button>
+          <button class="picnic-slot" type="button" data-accept="berries"><small>buah</small></button>
+          <button class="picnic-slot" type="button" data-accept="flower"><small>dekorasi</small></button>
+          <span class="picnic-duck" aria-hidden="true">🦆</span>
+        </div>
+        <p class="picnic-status" id="picnicStatus" aria-live="polite">0 dari 4 sudah siap</p>
+      </div>
+      <button class="secondary-button" id="picnicSkip" type="button">lewati permainan</button>
+    </section>
+
+    <section class="scene maze-scene" id="maze" aria-labelledby="mazeTitle" hidden>
+      <header class="scene-heading">
+        <p class="step-label">03 · a tiny duck delivery</p>
+        <h2 id="mazeTitle">Antarkan <span>kado kecil</span></h2>
+        <p>Seret bebek pembawa kado sampai ke sahabatnya. Tidak ada rintangan—ikuti saja jejak kuningnya.</p>
+      </header>
+      <div class="maze-game">
+        <div class="duck-maze easy-duck-trail" id="duckMaze" tabindex="0" aria-label="Seret bebek pembawa kado menuju sahabatnya atau gunakan tombol panah.">
+          <span class="maze-route" aria-hidden="true"></span>
+          <span class="trail-spark trail-spark-one" aria-hidden="true">✦</span>
+          <span class="trail-spark trail-spark-two" aria-hidden="true">♡</span>
+          <span class="trail-spark trail-spark-three" aria-hidden="true">✦</span>
+          <span class="pond-target" id="pondTarget" aria-hidden="true"><b>🐥</b><small>bestie</small></span>
+          <button class="maze-duck" id="mazeDuck" type="button" aria-label="Bebek pembawa kado yang harus diseret">🦆<i>🎁</i></button>
+        </div>
+        <p class="maze-status" id="mazeStatus" aria-live="polite">Tahan bebeknya, lalu seret menuju sahabatnya.</p>
+      </div>
+      <button class="secondary-button" id="mazeSkip" type="button">lewati permainan</button>
+    </section>
+
+<section class="scene reflex-scene" id="reflex" aria-labelledby="reflexTitle" hidden>
       <div class="reflex-copy">
-        <p class="step-label">02 · catch the sunshine</p>
+        <p class="step-label">04 · catch the sunshine</p>
         <h2 id="reflexTitle">Kejar <span>7 little suns</span></h2>
         <p>Ketuk target yang menyala. Setiap kena, posisinya akan berpindah.</p>
       </div>
@@ -73,7 +118,7 @@
 
     <section class="scene puzzle-scene" id="puzzle" aria-labelledby="puzzleTitle" hidden>
       <div class="note-card">
-        <p class="step-label">03 · three words for you</p>
+        <p class="step-label">05 · three words for you</p>
         <h2 id="puzzleTitle">Tiga kata bersembunyi di sini</h2>
         <p>Tarik garis lurus di atas huruf untuk menemukan <strong>DEEPTALK</strong>, <strong>KULINER</strong>, dan <strong>DLYNN</strong>.</p>
         <div class="found-list" id="foundList" aria-live="polite"></div>
@@ -88,7 +133,7 @@
 
     <section class="scene pin-scene" id="pin" aria-labelledby="pinTitle" hidden>
       <div class="pin-card">
-        <p class="step-label">04 · one last lock</p>
+        <p class="step-label">06 · one last lock</p>
         <h2 id="pinTitle">Enter PIN</h2>
         <p>tanggal yang selalu layak dirayakan</p>
         <div class="pin-dots" id="pinDots" aria-label="PIN 4 digit"><i></i><i></i><i></i><i></i></div>
@@ -107,8 +152,11 @@
     <section class="story" id="story" hidden>
       <div class="story-hero reveal">
         <p class="eyebrow">you made it, birthday girl</p>
-        <h2>Untuk sahabat yang<br><em>membuat cerita biasa jadi seru.</em></h2>
-        <p>Ini tempat kecil untuk menyimpan tawa, perjalanan tanpa tujuan, dan alasan kenapa persahabatan ini begitu berarti.</p>
+        <h2>Dlynn, selamat ulang tahun bes💐</h2>
+        <div class="story-opening-copy">
+          <p>Hampir semua hal seru di hidupku ada kamu di dalamnya. Kulineran, deeptalk sampai lupa waktu, jalan-jalan nggak jelas sampai ngeratain semua jalan di Wonosobo wkwk, semuanya lebih seru kalau bareng pokoknya.</p>
+          <p>Makasih ya udah jadi sahabat yang selalu ada, pas seneng maupun pas aku lagi berantakan meskipun masih suka berantem karna banyaknya perbedaan pendapat dan banyaknya perdebatan karna ga sejalan.</p>
+        </div>
         <div class="mixtape-player" aria-labelledby="playlistTitle">
           <div class="record-wrap" aria-hidden="true"><div class="record"><span></span></div></div>
           <div class="mixtape-content">
@@ -140,11 +188,14 @@
       <section class="letter-section">
         <div class="letter-paper reveal">
           <p class="letter-date">27 September · untuk Dlynn</p>
-          <h3>Untuk sahabat yang selalu ada...</h3>
-          <p>Dlynn, selamat ulang tahun bes 💐 Hampir semua hal seru di hidupku ada kamu di dalamnya. Kulineran, deeptalk sampai lupa waktu, dan jalan-jalan nggak jelas—semuanya lebih seru kalau bareng kamu.</p>
-          <p>Makasih sudah jadi sahabat yang selalu ada, pas senang maupun saat aku lagi berantakan. Meski kita masih suka berdebat karena beda pendapat, kamu tetap salah satu orang yang paling berarti.</p>
-          <p>Kamu nggak harus selalu kuat. Istirahat kalau capek. Ada aku yang siap menghibur dan mengajakmu ngeratain jalan sampai kamu lupa sebentar sama segala beban yang kamu rasakan.</p>
-          <div class="signature">always on your side,<br><strong>27</strong></div>
+          <h3>lappy birthday</h3>
+          <p>Another year older, another level unlocked. Semoga di umur yang sekarang, semua hal baik makin deket ke kamu.</p>
+          <p>Makasih juga udah jadi orang yang selalu punya vibes asik, bisa diajak cerita, bercanda, bahkan di momen receh sekalipun. Honestly ga semua orang bisa bikin orang lain ngerasa nyaman cuma lewat presence mereka, but you do.</p>
+          <p>Semoga tahun ini banyak hal yang berjalan sesuai harapan kamu. Kalaupun ada yang ga sesuai plan, semoga diganti sama sesuatu yang ternyata lebih baik. Jangan lupa juga buat take care of yourself, istirahat yang cukup, makan yang bener, dan stop overthinking hal-hal yang sebenernya belum tentu kejadian.</p>
+          <p>I wish you more happiness, more good people around you, more opportunities, and obviously more money karena kita butuh itu buat survive, wkwk.</p>
+          <p>Tetep jadi orang yang seru, tulus, dan punya cara unik buat bikin orang lain ketawa. Semoga semua yang kamu usahain pelan-pelan bisa ke achieve satu-satu. And semoga tahun ini kamu lebih banyak ketawa daripada sedihnya.</p>
+          <p>Once again, happy birthday. Hope this year treats you way better than the last one.</p>
+          <div class="signature">always on your side,<br><strong>i see</strong></div>
         </div>
       </section>
 
@@ -240,8 +291,8 @@
   <audio id="audio" preload="auto" autoplay loop src="assets/birds-of-a-feather.mp3"></audio>
   
 8:X
-0:{"buildId":"03FAxWuYoBgjON84ilbb0","data":[{"rsc":["$","$1","c",{"children":[[["$","div",null,{"className":"luxury-frame","aria-hidden":"true","children":[["$","span",null,{"className":"frame-mark frame-mark-left","children":"27"}],["$","span",null,{"className":"frame-line"}],["$","span",null,{"className":"frame-copy","children":"a little yellow birthday"}],["$","span",null,{"className":"frame-line"}],["$","span",null,{"className":"frame-mark","children":"09"}]]}],["$","div",null,{"className":"blue-backdrop-collage","aria-hidden":"true","children":[["$","$L2",null,{"className":"backdrop-flower backdrop-flower-top","src":"/assets/duck-friends-decor.png","alt":"","width":1230,"height":1278,"sizes":"(max-width: 820px) 260px, 38vw","priority":true}],["$","$L2",null,{"className":"backdrop-flower backdrop-flower-bottom","src":"/assets/duck-friends-decor.png","alt":"","width":1230,"height":1278,"sizes":"(max-width: 820px) 240px, 34vw"}],["$","span",null,{"className":"backdrop-ring backdrop-ring-one"}],["$","span",null,{"className":"backdrop-ring backdrop-ring-two"}]]}],["$","div",null,{"className":"hero-decor","aria-hidden":"true","children":[["$","span",null,{"className":"hero-orbit hero-orbit-wide"}],["$","span",null,{"className":"hero-orbit hero-orbit-small"}],["$","span",null,{"className":"hero-seal","children":[["$","b",null,{"children":"27"}],["$","i",null,{"children":"September"}]]}],["$","span",null,{"className":"hero-note","children":"a sunny little celebration · made for dlynn"}],["$","$L2",null,{"className":"hero-bloom hero-bloom-main","src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"(max-width: 820px) 170px, 280px","priority":true}],["$","$L2",null,{"className":"hero-bloom hero-bloom-small","src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"(max-width: 820px) 100px, 160px"}]]}],["$","div",null,{"className":"floating-bouquet bouquet-one","aria-hidden":"true","children":[["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}]]}],["$","div",null,{"className":"floating-bouquet bouquet-two","aria-hidden":"true","children":[["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}]]}],["$","div",null,{"className":"legacy-experience","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
-f:I[2368,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/00obax4y4vtcj.js"],"default"]
+0:{"buildId":"QMoychpgcokVgH6NjCybh","data":[{"rsc":["$","$1","c",{"children":[[["$","div",null,{"className":"luxury-frame","aria-hidden":"true","children":[["$","span",null,{"className":"frame-mark frame-mark-left","children":"27"}],["$","span",null,{"className":"frame-line"}],["$","span",null,{"className":"frame-copy","children":"a little yellow birthday"}],["$","span",null,{"className":"frame-line"}],["$","span",null,{"className":"frame-mark","children":"09"}]]}],["$","div",null,{"className":"blue-backdrop-collage","aria-hidden":"true","children":[["$","$L2",null,{"className":"backdrop-flower backdrop-flower-top","src":"/assets/duck-friends-decor.png","alt":"","width":1230,"height":1278,"sizes":"(max-width: 820px) 260px, 38vw","priority":true}],["$","$L2",null,{"className":"backdrop-flower backdrop-flower-bottom","src":"/assets/duck-friends-decor.png","alt":"","width":1230,"height":1278,"sizes":"(max-width: 820px) 240px, 34vw"}],["$","span",null,{"className":"backdrop-ring backdrop-ring-one"}],["$","span",null,{"className":"backdrop-ring backdrop-ring-two"}]]}],["$","div",null,{"className":"hero-decor","aria-hidden":"true","children":[["$","span",null,{"className":"hero-orbit hero-orbit-wide"}],["$","span",null,{"className":"hero-orbit hero-orbit-small"}],["$","span",null,{"className":"hero-seal","children":[["$","b",null,{"children":"27"}],["$","i",null,{"children":"September"}]]}],["$","span",null,{"className":"hero-note","children":"a sunny little celebration · made for dlynn"}],["$","$L2",null,{"className":"hero-bloom hero-bloom-main","src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"(max-width: 820px) 170px, 280px","priority":true}],["$","$L2",null,{"className":"hero-bloom hero-bloom-small","src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"(max-width: 820px) 100px, 160px"}]]}],["$","div",null,{"className":"floating-bouquet bouquet-one","aria-hidden":"true","children":[["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}]]}],["$","div",null,{"className":"floating-bouquet bouquet-two","aria-hidden":"true","children":[["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}],["$","$L2",null,{"src":"/assets/duck-party-transition.png","alt":"","width":1254,"height":1254,"sizes":"145px"}]]}],["$","div",null,{"className":"legacy-experience","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"],["$L5"],"$L6"]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$8","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$8","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@d","rootVaryParams":null,"needsRuntimeRequest":"$@e"}
+f:I[2368,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/0g8ub3meqepl6.js"],"default"]
 10:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
 11:"$Sreact.suspense"
 13:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
@@ -249,12 +300,12 @@ f:I[2368,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/00obax4y
 15:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 16:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
 17:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
-:HL["/_next/static/chunks/3zg8th652_0n2.css","style"]
+:HL["/_next/static/chunks/0vuenv1h26-36.css","style"]
 4:["$","$Lf",null,{}]
-5:["$","script","script-0",{"src":"/_next/static/chunks/00obax4y4vtcj.js","async":true}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/0g8ub3meqepl6.js","async":true}]
 6:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
 9:["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L14",null,{"children":["$","$11",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"A Little Yellow Birthday — for Dlynn"}],["$","meta","1",{"name":"description","content":"Perjalanan ulang tahun kecil bernuansa kuning yang dibuat khusus untuk Dlynn."}],["$","link","2",{"rel":"icon","href":"/favicon.svg"}],["$","$L15","3",{}]]}]}]}],null]}]
-b:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3zg8th652_0n2.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"id","children":["$","body",null,{"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]]}]
+b:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vuenv1h26-36.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"id","children":["$","body",null,{"children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]]}]
 12:null
 e:true
 8:300
