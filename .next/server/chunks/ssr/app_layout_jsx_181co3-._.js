@@ -1,0 +1,3 @@
+module.exports=[98421,a=>{"use strict";var b=a.i(7997);a.s(["default",0,function({children:a}){return(0,b.jsx)("html",{lang:"id",children:(0,b.jsx)("body",{children:a})})},"metadata",0,{title:"A Little Yellow Birthday — for Dlynn",description:"Perjalanan ulang tahun kecil bernuansa kuning yang dibuat khusus untuk Dlynn.",icons:{icon:"/favicon.svg"}}])},46122,function(a){a.n(a.i(98421))}];
+
+//# sourceMappingURL=app_layout_jsx_181co3-._.js.map
